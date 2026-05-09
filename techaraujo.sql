@@ -92,6 +92,7 @@ CREATE TABLE `servicio` (
 
 CREATE TABLE `ticket` (
   `id` int(11) NOT NULL,
+  `tipo` VARCHAR(25) NOT NULL,
   `descripcion` varchar(255) DEFAULT NULL,
   `estado` tinyint(1) DEFAULT 0,
   `fecha_emi` date DEFAULT NULL,
