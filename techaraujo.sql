@@ -96,7 +96,7 @@ CREATE TABLE `ticket` (
   `descripcion` varchar(255) DEFAULT NULL,
   `estado` tinyint(1) DEFAULT 0,
   `fecha_emi` date DEFAULT NULL,
-  `usuario_id` int(11) DEFAULT NULL
+  `cliente_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
