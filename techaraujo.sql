@@ -181,6 +181,7 @@ ALTER TABLE `servicio`
 ALTER TABLE `ticket`
   ADD PRIMARY KEY (`id`),
   ADD KEY `usuario_id` (`usuario_id`);
+  ADD KEY `tecnico_id` (`usuario_id`);
 
 --
 -- Indices de la tabla `trabajo`
@@ -191,7 +192,6 @@ ALTER TABLE `trabajo`
   ADD KEY `ticket_id` (`ticket_id`),
   ADD KEY `componente_id` (`componente_id`),
   ADD KEY `servicio_id` (`servicio_id`),
-  ADD KEY `tecnico_asignado` (`tecnico_asignado`);
 
 --
 -- Indices de la tabla `usuario`
