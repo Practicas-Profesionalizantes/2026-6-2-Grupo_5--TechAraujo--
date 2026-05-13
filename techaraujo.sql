@@ -93,7 +93,7 @@ CREATE TABLE `servicio` (
 CREATE TABLE `ticket` (
   `id` int(11) NOT NULL,
   `tipo` VARCHAR(25) NOT NULL,
-  `descripcion` varchar(255) DEFAULT NULL,
+  `descripcion` TEXT DEFAULT NULL,
   `estado` tinyint(1) DEFAULT 0,
   `fecha_emi` date DEFAULT NULL,
   `cliente_id` int(11) DEFAULT NULL
@@ -128,11 +128,11 @@ CREATE TABLE `trabajo` (
 
 CREATE TABLE `usuario` (
   `id` int(11) NOT NULL,
-  `nombre` varchar(10) DEFAULT NULL,
+  `nombre` varchar(15) DEFAULT NULL,
   `apellido` varchar(20) DEFAULT NULL,
   `rol` tinyint(1) DEFAULT 1,
   `email` varchar(50) DEFAULT NULL,
-  `contraseña` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
   `direccion` varchar(100) DEFAULT NULL,
   `telefono` int(20) DEFAULT NULL,
   `fecha` date DEFAULT NULL
