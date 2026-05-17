@@ -41,8 +41,7 @@ CREATE TABLE `chat` (
 CREATE TABLE `componente` (
   `id` int(11) NOT NULL,
   `nombre` varchar(30) DEFAULT NULL,
-  `descripcion` varchar(255) DEFAULT NULL,
-  `precio` int(11) DEFAULT NULL
+  `descripcion` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -81,7 +80,8 @@ CREATE TABLE `mensaje` (
 CREATE TABLE `servicio` (
   `id` int(11) NOT NULL,
   `nombre` varchar(30) DEFAULT NULL,
-  `precio` int(11) DEFAULT NULL
+  `descripcion` varchar(255) DEFAULT NULL
+
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -96,8 +96,22 @@ CREATE TABLE `ticket` (
   `descripcion` TEXT DEFAULT NULL,
   `estado` tinyint(1) DEFAULT 0,
   `fecha_emi` date DEFAULT NULL,
-  `cliente_id` int(11) DEFAULT NULL
+  `cliente_id` int(11) DEFAULT NULL,
   `tecnico_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `Componente_Servicio`
+--
+
+CREATE TABLE `componente_servicio` (
+  `id` int(11) NOT NULL,
+  `servicio_id` int(11) DEFAULT NULL,
+  `precio_servicio` int(11) DEFAULT NULL,
+  `componente_id` int(11) DEFAULT NULL,
+  `precio_componente` int(11) DEFAULT NULL,
+  `unidad_componente` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -115,8 +129,7 @@ CREATE TABLE `trabajo` (
   `fecha_sal` date DEFAULT NULL,
   `equipo_id` int(11) DEFAULT NULL,
   `ticket_id` int(11) DEFAULT NULL,
-  `componente_id` int(11) DEFAULT NULL,
-  `servicio_id` int(11) DEFAULT NULL,
+  `sercom_id` int(11) DEFAULT NULL,
   `tecnico_asignado` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -185,14 +198,22 @@ ALTER TABLE `ticket`
   ADD KEY `tecnico_id` (`usuario_id`);
 
 --
+-- Indices de la tabla "componente_servicio"
+--
+
+ALTER TABLE `componente_servicio`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `servicio_id` (`servicio_id`),
+  ADD KEY `componente_id` (`componente_id`);
+
+--
 -- Indices de la tabla `trabajo`
 --
 ALTER TABLE `trabajo`
   ADD PRIMARY KEY (`id`),
   ADD KEY `equipo_id` (`equipo_id`),
   ADD KEY `ticket_id` (`ticket_id`),
-  ADD KEY `componente_id` (`componente_id`),
-  ADD KEY `servicio_id` (`servicio_id`),
+  ADD KEY `sercom_id` (`sercom_id`),
 
 --
 -- Indices de la tabla `usuario`
@@ -241,6 +262,13 @@ ALTER TABLE `ticket`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT de la tabla `componente_servicio`
+--
+ALTER TABLE `componente_servicio`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+
+--
 -- AUTO_INCREMENT de la tabla `trabajo`
 --
 ALTER TABLE `trabajo`
@@ -281,15 +309,32 @@ ALTER TABLE `mensaje`
 ALTER TABLE `ticket`
   ADD CONSTRAINT `ticket_ibfk_1` FOREIGN KEY (`usuario_id`) REFERENCES `usuario` (`id`);
 
+
+--
+-- Filtros para la tabla `componente_servicio`
+--
+ALTER TABLE `componente_servicio`
+  ADD CONSTRAINT `componente_servicio_ibfk_1`
+    FOREIGN KEY (`servicio_id`) REFERENCES `servicio` (`id`),
+
+  ADD CONSTRAINT `componente_servicio_ibfk_2`
+    FOREIGN KEY (`componente_id`) REFERENCES `componente` (`id`);
+
 --
 -- Filtros para la tabla `trabajo`
 --
 ALTER TABLE `trabajo`
-  ADD CONSTRAINT `trabajo_ibfk_1` FOREIGN KEY (`equipo_id`) REFERENCES `equipo` (`id`),
-  ADD CONSTRAINT `trabajo_ibfk_2` FOREIGN KEY (`ticket_id`) REFERENCES `ticket` (`id`),
-  ADD CONSTRAINT `trabajo_ibfk_3` FOREIGN KEY (`componente_id`) REFERENCES `componente` (`id`),
-  ADD CONSTRAINT `trabajo_ibfk_4` FOREIGN KEY (`servicio_id`) REFERENCES `servicio` (`id`),
-  ADD CONSTRAINT `trabajo_ibfk_5` FOREIGN KEY (`tecnico_asignado`) REFERENCES `usuario` (`id`);
+  ADD CONSTRAINT `trabajo_ibfk_1`
+    FOREIGN KEY (`equipo_id`) REFERENCES `equipo` (`id`),
+
+  ADD CONSTRAINT `trabajo_ibfk_2`
+    FOREIGN KEY (`ticket_id`) REFERENCES `ticket` (`id`),
+
+  ADD CONSTRAINT `trabajo_ibfk_3`
+    FOREIGN KEY (`sercom_id`) REFERENCES `componente_servicio` (`id`),
+
+  ADD CONSTRAINT `trabajo_ibfk_4`
+    FOREIGN KEY (`tecnico_asignado`) REFERENCES `usuario` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
