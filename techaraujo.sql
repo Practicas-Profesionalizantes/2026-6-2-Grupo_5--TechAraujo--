@@ -129,8 +129,7 @@ CREATE TABLE `trabajo` (
   `fecha_sal` date DEFAULT NULL,
   `equipo_id` int(11) DEFAULT NULL,
   `ticket_id` int(11) DEFAULT NULL,
-  `sercom_id` int(11) DEFAULT NULL,
-  `tecnico_asignado` int(11) DEFAULT NULL
+  `sercom_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -194,7 +193,7 @@ ALTER TABLE `servicio`
 --
 ALTER TABLE `ticket`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `usuario_id` (`usuario_id`);
+  ADD KEY `usuario_id` (`usuario_id`);,
   ADD KEY `tecnico_id` (`usuario_id`);
 
 --
@@ -213,7 +212,7 @@ ALTER TABLE `trabajo`
   ADD PRIMARY KEY (`id`),
   ADD KEY `equipo_id` (`equipo_id`),
   ADD KEY `ticket_id` (`ticket_id`),
-  ADD KEY `sercom_id` (`sercom_id`),
+  ADD KEY `sercom_id` (`sercom_id`);
 
 --
 -- Indices de la tabla `usuario`
@@ -307,7 +306,8 @@ ALTER TABLE `mensaje`
 -- Filtros para la tabla `ticket`
 --
 ALTER TABLE `ticket`
-  ADD CONSTRAINT `ticket_ibfk_1` FOREIGN KEY (`usuario_id`) REFERENCES `usuario` (`id`);
+  ADD CONSTRAINT `ticket_ibfk_1` FOREIGN KEY (`usuario_id`) REFERENCES `usuario` (`id`),
+  ADD CONSTRAINT `ticket_ibfk_2` FOREIGN KEY (`tecnico_id`) REFERENCES `usuario` (`id`);
 
 
 --
@@ -331,10 +331,8 @@ ALTER TABLE `trabajo`
     FOREIGN KEY (`ticket_id`) REFERENCES `ticket` (`id`),
 
   ADD CONSTRAINT `trabajo_ibfk_3`
-    FOREIGN KEY (`sercom_id`) REFERENCES `componente_servicio` (`id`),
+    FOREIGN KEY (`sercom_id`) REFERENCES `componente_servicio` (`id`);
 
-  ADD CONSTRAINT `trabajo_ibfk_4`
-    FOREIGN KEY (`tecnico_asignado`) REFERENCES `usuario` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
