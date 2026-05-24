@@ -1,6 +1,6 @@
 <mxfile host="Electron">
   <diagram name="Página-1" id="al4I7JtoItqII6w8gajG">
-    <mxGraphModel dx="3674" dy="2370" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="3142" dy="2054" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -234,14 +234,6 @@
         </mxCell>
         <mxCell id="vaj4k3NydqOkPj5CBuTm-75" parent="1" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" value="ticket_id" vertex="1">
           <mxGeometry height="80" width="80" x="250" y="131.75" as="geometry" />
-        </mxCell>
-        <mxCell id="vaj4k3NydqOkPj5CBuTm-76" edge="1" parent="1" source="vaj4k3NydqOkPj5CBuTm-77" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.25;entryY=0;entryDx=0;entryDy=0;endArrow=none;endFill=0;" target="vaj4k3NydqOkPj5CBuTm-72">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="79.5" y="-213.25" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="vaj4k3NydqOkPj5CBuTm-77" parent="1" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" value="tipo" vertex="1">
-          <mxGeometry height="80" width="80" x="20" y="-83.25" as="geometry" />
         </mxCell>
         <mxCell id="vaj4k3NydqOkPj5CBuTm-78" edge="1" parent="1" source="vaj4k3NydqOkPj5CBuTm-79" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.75;entryY=0;entryDx=0;entryDy=0;endArrow=none;endFill=0;" target="vaj4k3NydqOkPj5CBuTm-72">
           <mxGeometry relative="1" as="geometry" />
