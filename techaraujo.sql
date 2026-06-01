@@ -99,6 +99,8 @@ CREATE TABLE `ticket` (
   `estado` tinyint(1) DEFAULT 0,
   `fecha_emi` date DEFAULT NULL,
   `cliente_id` int(11) DEFAULT NULL,
+  `telefono` varchar(20) DEFAULT NULL,
+
   `tecnico_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -132,7 +134,6 @@ CREATE TABLE `usuario` (
   `email` varchar(255) DEFAULT NULL,
   `password_hash` char(32) DEFAULT NULL,
   `direccion` varchar(200) DEFAULT NULL,
-  `telefono` varchar(20) DEFAULT NULL,
   `fecha` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
