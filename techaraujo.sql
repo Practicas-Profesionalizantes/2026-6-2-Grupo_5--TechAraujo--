@@ -56,6 +56,8 @@ CREATE TABLE `componente` (
 CREATE TABLE `equipo` (
   `id` int(11) NOT NULL,
   `ticket_id` int(11) DEFAULT NULL,
+  `marca` varchar(50) DEFAULT NULL,
+  `modelo` varchar(50) DEFAULT NULL,
   `descripcion` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
