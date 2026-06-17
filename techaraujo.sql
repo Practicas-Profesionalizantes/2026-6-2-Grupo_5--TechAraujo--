@@ -115,6 +115,7 @@ CREATE TABLE `ticket` (
 CREATE TABLE `trabajo` (
   `id` int(11) NOT NULL,
   `diagnostico` text DEFAULT NULL,
+  ´notas´ text DEFAULT NULL;
   `presupuesto` decimal(10,2) DEFAULT NULL,
   `estado` tinyint(1) DEFAULT 0,
   `fecha_ing` date DEFAULT NULL,
