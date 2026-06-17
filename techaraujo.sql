@@ -44,6 +44,7 @@ CREATE TABLE `componente` (
   `descripcion` text DEFAULT NULL,
   `precio` decimal(10,2) DEFAULT NULL,
   `unidad` tinyint(1) DEFAULT 1,
+  ´instalado´ TINYINT(1) DEFAULT 0;
   `trabajo_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
