@@ -84,6 +84,7 @@ CREATE TABLE `mensaje` (
 CREATE TABLE `servicio` (
   `id` int(11) NOT NULL,
   `nombre` varchar(50) DEFAULT NULL,
+  ´estado´ TINYINT(1) DEFAULT 0;
   `precio` decimal(10,2) DEFAULT NULL,
   `trabajo_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
