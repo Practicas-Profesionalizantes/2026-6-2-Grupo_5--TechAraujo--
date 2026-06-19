@@ -1,57 +1,93 @@
 export interface Mensaje {
-    id: string;
-    senderId: string;
-    senderName: string;
-    senderRole: rol_usuario;
-    text: string;
-    timestamp: string;
+  id: string;
+  idRemitente: string;
+  nombreRemitente: string;
+  rolRemitente: RolUsuario;
+  texto: string;
+  fechaHora: string;
 }
 
 export interface PC {
-    id: string;
-    cliente: string;
-    contacto: string;
-    marca: string;
-    modelo: string;
-    estados: "recibida"|"diagnosticando"|"reparando"|"lista"|"entregada";
-    componentes: Array<{
-        nombre: string;
-        precio: string;
-        checked: boolean;
-    }>;
-    repairs:Array<{
-        descripcion: string;
-        lista: boolean;
-    }>;
-    preciototal: string;
-    budget: string;
-    diagnostico: string;
-    notas: string;
-    tecnicoasignadoId: string;
-    mensaje: Mensaje[]
-    createdAt: string;
+  id: string;
+  cliente: string;
+  contacto: string;
+  marca: string;
+  modelo: string;
+
+  estado:
+    | "recibida"
+    | "diagnosticando"
+    | "reparando"
+    | "lista"
+    | "entregada";
+
+  componentes: Array<{
+    nombre: string;
+    precio: string;
+    verificado: boolean;
+  }>;
+
+  reparaciones: Array<{
+    descripcion: string;
+    realizada: boolean;
+  }>;
+
+  precioTotal: string;
+  presupuesto: string;
+  diagnostico: string;
+  notas: string;
+
+  tecnicoAsignadoId?: string;
+
+  mensajes: Mensaje[];
+
+  fechaCreacion: string;
 }
 
-export interface TicketRequest {
-    id:string;
-    cliente: string;
-    telefono: string;
-    email: string;
-    tipo_de_pc: "pc"|"laptop";
-    marca: string;
-    modelo: string;
-    problema: string;
-    estado: "nuevo"|"pendiente"|"aprobado"|"rechazado";
-    tecnicoasignadoId: string;
-    pcID: string;
-    createdAt: string;
+export interface SolicitudTicket {
+  id: string;
+
+  cliente: string;
+  telefono: string;
+  email: string;
+
+  tipoDispositivo: "pc" | "laptop";
+
+  marca: string;
+  modelo: string;
+
+  problema: string;
+
+  estado:
+    | "nuevo"
+    | "pendiente"
+    | "aprobado"
+    | "rechazado";
+
+  tecnicoAsignadoId?: string;
+
+  idPC?: string;
+
+  fechaCreacion: string;
 }
-export type rol_usuario= "cliente"|"tecnico"|"administrador";
-export interface usuario {
-    id:string;
-    email:string;
-    telefono:string;
-    contraseña:string;
-    role: rol_usuario;
-    createdAt: string;
+
+export type RolUsuario =
+  | "cliente"
+  | "tecnico"
+  | "administrador";
+
+export interface Usuario {
+  id: string;
+
+  nombre: string;
+
+  email: string;
+
+  telefono?: string;
+
+  contraseña: string;
+
+  rol: RolUsuario;
+
+  fechaCreacion: string;
 }
