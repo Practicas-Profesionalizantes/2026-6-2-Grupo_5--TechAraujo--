@@ -1,5 +1,5 @@
 import { Search, Plus } from "lucide-react";
-import type { PC, User } from "../types";
+import type { PC, Usuario } from "../types";
 
 interface PCListProps {
   pcs: PC[];
@@ -8,7 +8,7 @@ interface PCListProps {
   onAdd: () => void;
   searchTerm: string;
   onSearchChange: (value: string) => void;
-  currentUser: User;
+  currentUser: Usuario;
 }
 
 export function PCList({
@@ -24,9 +24,9 @@ export function PCList({
     switch (estado) {
       case "recibida":
         return "bg-[#9ca3af]";
-      case "diagnostico":
+      case "diagnosticando":
         return "bg-[#60a5fa]";
-      case "reparacion":
+      case "reparando":
         return "bg-[#f59e0b]";
       case "lista":
         return "bg-[#10b981]";
@@ -41,9 +41,9 @@ export function PCList({
     switch (estado) {
       case "recibida":
         return "Recibida";
-      case "diagnostico":
+      case "diagnosticando":
         return "Diagnóstico";
-      case "reparacion":
+      case "reparando":
         return "Reparación";
       case "lista":
         return "Lista";
@@ -61,7 +61,7 @@ export function PCList({
     ? pcs
     : isTechnician
     ? pcs.filter(
-        (pc) => pc.idTecnicoAsignado === currentUser.id
+        (pc) => pc.tecnicoAsignadoId === currentUser.id
       )
     : pcs;
 
