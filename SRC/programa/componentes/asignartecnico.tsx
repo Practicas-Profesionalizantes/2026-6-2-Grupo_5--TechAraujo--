@@ -52,3 +52,69 @@ export function AssignTechnicianModal({
                 {ticket.cliente}
               </span>
             </div>
+
+            <div>
+              <span className="text-xs text-muted-foreground">
+                Tipo:
+              </span>{" "}
+              <span className="text-sm text-foreground capitalize">
+                {ticket.tipoDispositivo}
+              </span>
+            </div>
+
+            <div>
+              <span className="text-xs text-muted-foreground">
+                Problema:
+              </span>{" "}
+              <span className="text-sm text-foreground">
+                {ticket.problema}
+              </span>
+            </div>
+          </div>
+
+          <div>
+            <label className="block text-xs text-muted-foreground mb-1.5">
+              Técnico asignado *
+            </label>
+
+            <select
+              required
+              value={selectedTechId}
+              onChange={(e) => setSelectedTechId(e.target.value)}
+              className="w-full px-3 py-2 bg-background border border-input rounded-md text-sm text-foreground focus:outline-none focus:ring-1 focus:ring-ring"
+            >
+              <option value="">
+                Seleccionar técnico...
+              </option>
+
+              {technicians.map((tech) => (
+                <option key={tech.id} value={tech.id}>
+                  {tech.nombre} - {tech.email}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div className="flex justify-end gap-2 pt-2">
+            <button
+              type="button"
+              onClick={onClose}
+              className="px-4 py-2 text-sm text-muted-foreground hover:bg-muted rounded-md transition-colors"
+            >
+              Cancelar
+            </button>
+
+            <button
+              type="submit"
+              className="px-4 py-2 text-sm bg-foreground text-background rounded-md hover:opacity-90 transition-opacity flex items-center gap-2"
+            >
+              <UserCheck className="w-3.5 h-3.5" />
+              Aceptar y Asignar
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
+}
+
