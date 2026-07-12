@@ -1,43 +1,45 @@
-import {useState} from "react";
-import {Login} from "lucide-react";
-import type {Usuario, RolUsuario} from "../types";
+import React, { useState } from "react";
+import { LogIn } from "lucide-react"; 
+import type { Usuario } from "../types"; 
 
-interface PropiedadesLogin{alIniciarSesion:(usuario: Usuario) => void;
-    cambiarARegistro: () => void;
-    listaUsuario: Usuario[];
+interface PropiedadesLogin {
+  alIniciarSesion: (usuario: Usuario) => void;
+  cambiarARegistro: () => void;
+  listaUsuarios: Usuario[]; 
 }
 
-export function Login ({alIniciarSesion, cambiarARegistro, listaUsuarios,}: PropiedadesLogin){                              
-    const [correo, setCorreo] = useState("");
-    const [contrasena, setContrasena] = useState("");
-    const [mensajeError, setMensajeError] = useState("");
+export function Login({ alIniciarSesion, cambiarARegistro, listaUsuarios }: PropiedadesLogin) {
+  const [correo, setCorreo] = useState("");
+  const [contrasena, setContrasena] = useState("");
+  const [mensajeError, setMensajeError] = useState("");
 
-    const manejarEnvio = (evento: React.FormEvent) => {
-        evento.preventDefeault();
-        setMensajeError("");
+  const manejarEnvio = (evento: React.FormEvent) => {
+    evento.preventDefault();
+    setMensajeError("");
 
     const usuarioEncontrado = listaUsuarios.find(
-        (usuario) => usuario.email === correo && usuario.contrasena === contrasena); 
-        if (usuarioEncontrado){
-            alIniciarSesion(usuarioEncontrado)
-        }   else{
-            setMensajeError("Email o contrasena incorrectos");
-        }
-    };
-    
-};
-return (
+      (usuario) => usuario.email === correo && usuario.contraseña === contrasena
+    );
+
+    if (usuarioEncontrado) {
+      alIniciarSesion(usuarioEncontrado);
+    } else {
+      setMensajeError("Email o contraseña incorrectos");
+    }
+  };
+
+  return (
     <div className="min-h-screen flex items-center justify-center bg-background p-4">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
           <h1 className="text-3xl mb-2">TechRepair</h1>
           <p className="text-sm text-muted-foreground">
-            Sistema de Gestion de Reparaciones
+            Sistema de Gestión de Reparaciones
           </p>
         </div>
 
         <div className="bg-card border border-border rounded-lg p-6">
-          <h2 className="text-xl mb-6">Iniciar Sesion</h2>
+          <h2 className="text-xl mb-6">Iniciar Sesión</h2>
 
           <button
             type="button"
@@ -55,7 +57,7 @@ return (
 
             <div className="relative flex justify-center">
               <span className="px-2 bg-card text-xs text-muted-foreground">
-                o inicia sesion con email
+                o inicia sesión con email
               </span>
             </div>
           </div>
@@ -78,7 +80,7 @@ return (
 
             <div>
               <label className="block text-xs text-muted-foreground mb-1.5">
-                Contrasena
+                Contraseña
               </label>
 
               <input
@@ -104,18 +106,18 @@ return (
               className="w-full px-4 py-2.5 text-sm bg-foreground text-background rounded-md hover:opacity-90 transition-opacity flex items-center justify-center gap-2"
             >
               <LogIn className="w-4 h-4" />
-              Iniciar Sesion
+              Iniciar Sesión
             </button>
           </form>
 
           <div className="mt-6 pt-6 border-t border-border text-center">
             <p className="text-xs text-muted-foreground">
-              No tienes cuenta?{" "}
+              ¿No tienes cuenta?{" "}
               <button
                 onClick={cambiarARegistro}
                 className="text-foreground hover:underline"
               >
-                Registrate aqui
+                Regístrate aquí
               </button>
             </p>
           </div>
